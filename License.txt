@@ -1,0 +1,62 @@
+﻿阿里云计算云监控（CMS）软件开发工具包Java版
+Aliyun CMS SDK for Java
+
+版权所有 （C）阿里云计算有限公司
+Copyright (C) Alibaba Cloud Computing
+All rights reserved.
+http://www.aliyun.com
+
+=============================================================================
+本软件包还包含多个第三方软件库。使用本软件包代表你同时同意如下第三方软件包许可。
+
+This distribution contains multiple components, someof which fall 
+under different licenses. By using this package or any of the bundled 
+components enumerated below, you agree to be bound by the conditions 
+of the license for each respective component.
+
+
+fastjson-1.2.28
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+async-http-client-1.8.17
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+commons-beanutils-1.8.3
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+commons-digester-1.8
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+
+commons-logging-1.1.1
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+
+commons-validator-1.4.0
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+netty-3.9.2.Final
+------------------
+License：Apache License 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+
+
+slf4j-api-1.7.5
+------------------
+License：MIT (https://mit-license.org)
+
+junit-4.10
+------------------
+License：New BSD License (http://opensource.org/licenses/BSD-3-Clause)
+
+hamcrest-core-1.1.jar 
+------------------
+License：New BSD License (http://opensource.org/licenses/BSD-3-Clause)
+
+
+
