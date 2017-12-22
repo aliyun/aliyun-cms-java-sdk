@@ -1,4 +1,4 @@
-package com.aliyun.openservices.cms.builder;
+package com.aliyun.openservices.cms.builder.request;
 
 import com.aliyun.openservices.cms.request.CMSRequest;
 

@@ -7,6 +7,10 @@ public class CMSClientInit {
 
     public static Long groupId = null;
 
+    public static String host = null;
+
+    public static Integer  metricScheduleUploadThread = 3;
+
 
 
 }

@@ -1,8 +1,12 @@
-package com.aliyun.openservices.cms.builder;
+package com.aliyun.openservices.cms.builder.event;
 
+import com.aliyun.openservices.cms.CMSClientInit;
 import com.aliyun.openservices.cms.model.impl.CustomEvent;
+import com.aliyun.openservices.cms.support.PreCondition;
+import com.aliyun.openservices.cms.support.StringSupport;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by eli.lyj on 2017/8/21.
@@ -42,6 +46,21 @@ public class CustomEventBuilder extends AbstractEventBuilder<CustomEvent> {
     public CustomEventBuilder setGroupId(Long groupId) {
         event.setGroupId(groupId);
         return this;
+    }
+
+    protected void verify() {
+        super.verify();
+        PreCondition.alertWhenTrue(event.getGroupId() == null && CMSClientInit.groupId == null, "'groupId' must not be empty ");
+    }
+
+
+
+    protected void setDefaultValue() {
+        super.setDefaultValue();
+
+        if(event.getGroupId() == null) {
+            event.setGroupId(CMSClientInit.groupId);
+        }
     }
 
 

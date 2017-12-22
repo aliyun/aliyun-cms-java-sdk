@@ -37,4 +37,8 @@ public class Constants {
 
     public static final String CONST_X_ACS_PREFIX= "x-acs-";
     public static final String CONST_X_CMS_PREFIX= "x-cms-";
+
+    public static final String HEADER_X_STS_TOKEN = "x-cms-security-token";
+    public static final String HEADER_X_CALLER_TYPE = "x-cms-caller-type";
+    public static final String CONST_X_CALLER_TYPE = "token";
 }

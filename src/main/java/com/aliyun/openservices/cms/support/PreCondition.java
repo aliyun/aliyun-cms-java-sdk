@@ -6,9 +6,9 @@ package com.aliyun.openservices.cms.support;
 public class PreCondition {
 
 
-    public static void checkIsTrue(boolean value, String exception) {
+    public static void alertWhenTrue(boolean value, String exception) {
         if(value) {
-            throw new RuntimeException(exception);
+            throw new IllegalArgumentException(exception);
         }
     }
 

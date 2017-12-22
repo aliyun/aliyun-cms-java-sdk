@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.aliyun.openservices</groupId>
     <artifactId>aliyun-cms</artifactId>
-    <version>0.1.2</version>
-    <name>Aliyun CMS Data Upload SDK for Java API Version 0.1.0</name>
+    <version>0.1.8</version>
+    <name>Aliyun CMS Data Upload SDK for Java API Version</name>
     <licenses>
         <license>
             <name></name>

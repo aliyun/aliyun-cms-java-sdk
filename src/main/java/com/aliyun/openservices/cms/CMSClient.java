@@ -5,7 +5,11 @@ import com.aliyun.openservices.cms.exception.CMSException;
 import com.aliyun.openservices.cms.http.*;
 import com.aliyun.openservices.cms.http.impl.AsyncInvoker;
 import com.aliyun.openservices.cms.request.CustomEventUploadRequest;
+import com.aliyun.openservices.cms.request.CustomMetricUploadRequest;
+import com.aliyun.openservices.cms.request.SystemEventUploadRequest;
 import com.aliyun.openservices.cms.response.CustomEventUploadResponse;
+import com.aliyun.openservices.cms.response.CustomMetricUploadResponse;
+import com.aliyun.openservices.cms.response.SystemEventUploadResponse;
 import com.aliyun.openservices.cms.support.DateUtil;
 import com.aliyun.openservices.cms.support.StringSupport;
 import org.apache.commons.validator.routines.InetAddressValidator;
@@ -33,12 +37,18 @@ public class CMSClient {
     private HttpInvoker client;
     private final String host;
 
+    private final String stsToken;
+
     public CMSClient(String endPoint, String accessKeyId, String accessSecret) {
         this(endPoint, accessKeyId, accessSecret, null);
     }
 
 
     public CMSClient(String endPoint, String accessKeyId, String accessSecret, String sourceIp) {
+        this(endPoint, accessKeyId, accessSecret, sourceIp, null);
+    }
+
+    public CMSClient(String endPoint, String accessKeyId, String accessSecret, String sourceIp, String stsToken) {
         if(endPoint.endsWith("/")) {
             endPoint = endPoint.substring(0, endPoint.length() - 1);
         }
@@ -59,6 +69,7 @@ public class CMSClient {
             sourceIp = localMachineIp();
         }
         this.sourceIp = sourceIp;
+        this.stsToken = stsToken;
     }
 
     public void setClient(HttpInvoker client) {
@@ -71,6 +82,24 @@ public class CMSClient {
         ret.setRequestId(response.getRequestId());
         ret.setCode(response.getCode());
         ret.setMessage(response.getMsg());
+        return ret;
+    }
+
+    public CustomMetricUploadResponse putCustomMetric(CustomMetricUploadRequest request) throws CMSException {
+        Response response = invokeHttp(request.httpMethod(), request.uri(), request.queryParam(), request.body());
+        CustomMetricUploadResponse ret = new CustomMetricUploadResponse();
+        ret.setRequestId(response.getRequestId());
+        ret.setMessage(response.getMsg());
+        ret.setCode(response.getCode());
+        return ret;
+    }
+
+    public SystemEventUploadResponse putSystemEvent(SystemEventUploadRequest request) throws CMSException {
+        Response response = invokeHttp(request.httpMethod(), request.uri(), request.queryParam(), request.body());
+        SystemEventUploadResponse ret = new SystemEventUploadResponse();
+        ret.setRequestId(response.getRequestId());
+        ret.setMessage(response.getMsg());
+        ret.setCode(response.getCode());
         return ret;
     }
 
@@ -93,7 +122,6 @@ public class CMSClient {
         try {
             response = this.client.doHttpClient(request);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new CMSException("", "500", e.getMessage());
         }
         if(response.getHttpStatusCode() != 200
@@ -211,6 +239,10 @@ public class CMSClient {
         headParameter.put(Constants.CONST_X_CMS_APIVERSION, Constants.DEFAULT_API_VESION);
         headParameter.put(Constants.CONST_X_CMS_SIGNATURE_METHOD, Constants.HMAC_SHA1);
         headParameter.put(Constants.CONST_X_CMS_IP, sourceIp);
+        if(stsToken != null && stsToken.length() > 0) {
+            headParameter.put(Constants.HEADER_X_CALLER_TYPE, Constants.CONST_X_CALLER_TYPE);
+            headParameter.put(Constants.HEADER_X_STS_TOKEN, stsToken);
+        }
         return headParameter;
     }
 

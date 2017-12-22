@@ -1,7 +1,6 @@
-package com.aliyun.openservices.cms.builder;
+package com.aliyun.openservices.cms.builder.event;
 
 import com.aliyun.openservices.cms.CMSClientInit;
-import com.aliyun.openservices.cms.common.annotation.Nullable;
 import com.aliyun.openservices.cms.model.Event;
 import com.aliyun.openservices.cms.support.PreCondition;
 import com.aliyun.openservices.cms.support.StringSupport;
@@ -16,8 +15,8 @@ public abstract class AbstractEventBuilder<T extends Event> {
     protected T event;
 
     protected void verify() {
-        PreCondition.checkIsTrue(StringSupport.isNullOrEmpty(event.getName(), true), "'name' must not be empty");
-        PreCondition.checkIsTrue(event.getGroupId() == null && CMSClientInit.groupId == null, "'groupId' must not be empty ");
+        PreCondition.alertWhenTrue(StringSupport.isNullOrEmpty(event.getName(), true), "'name' must not be empty");
+
     }
 
 
@@ -34,10 +33,6 @@ public abstract class AbstractEventBuilder<T extends Event> {
         }
         if(event.getStatus() == null) {
             event.setStatus("N/A");
-        }
-
-        if(event.getGroupId() == null) {
-            event.setGroupId(CMSClientInit.groupId);
         }
     }
 

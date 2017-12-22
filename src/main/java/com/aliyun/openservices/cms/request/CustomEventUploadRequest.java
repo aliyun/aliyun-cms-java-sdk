@@ -2,12 +2,13 @@ package com.aliyun.openservices.cms.request;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.aliyun.openservices.cms.builder.CustomEventUploadRequestBuilder;
+import com.aliyun.openservices.cms.builder.request.CustomEventUploadRequestBuilder;
 import com.aliyun.openservices.cms.model.impl.CustomEvent;
 import com.aliyun.openservices.cms.response.CustomEventUploadResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by eli.lyj on 2017/8/18.
